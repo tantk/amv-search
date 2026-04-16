@@ -1,0 +1,10 @@
+torch
+transformers>=4.57.0
+qwen-vl-utils>=0.0.14
+sentence-transformers
+huggingface-hub
+turbopuffer
+elevenlabs
+librosa
+numpy<2.4
+Pillow

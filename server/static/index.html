@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en" data-mode="anime">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMV Search</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;500;700;900&family=DM+Sans:wght@300;400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  /* --- Anime theme (default) --- */
+  :root, [data-mode="anime"] {
+    --bg: #0c0c0c;
+    --surface: #161616;
+    --border: #2a2a2a;
+    --text: #d4d4d4;
+    --text-dim: #6b6b6b;
+    --accent: #e8ff47;
+    --accent-hover: #d4eb3a;
+    --mono: 'Space Mono', monospace;
+    --display: 'Outfit', sans-serif;
+    --body: 'Outfit', sans-serif;
+    --grain-opacity: 0.04;
+    --radius: 2px;
+  }
+
+  /* --- Normal/MV theme --- */
+  [data-mode="normal"] {
+    --bg: #f5f0eb;
+    --surface: #ffffff;
+    --border: #e0d8cf;
+    --text: #2a2520;
+    --text-dim: #8a8078;
+    --accent: #d44a1a;
+    --accent-hover: #b83d14;
+    --mono: 'Space Mono', monospace;
+    --display: 'Syne', sans-serif;
+    --body: 'DM Sans', sans-serif;
+    --grain-opacity: 0.02;
+    --radius: 8px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background 0.5s, color 0.5s;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: var(--grain-opacity);
+    pointer-events: none;
+    z-index: 9999;
+    transition: opacity 0.5s;
+  }
+
+  .hidden { display: none !important; }
+
+  .app {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 24px 60px;
+  }
+
+  /* --- Mode toggle --- */
+  .mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-dim);
+    transition: color 0.5s;
+  }
+  .mode-toggle .label { transition: color 0.3s; }
+  .mode-toggle .label.active { color: var(--accent); }
+
+  .toggle-track {
+    width: 44px;
+    height: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.5s, border-color 0.5s;
+  }
+  .toggle-thumb {
+    width: 18px;
+    height: 18px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.5s;
+  }
+  [data-mode="normal"] .toggle-thumb {
+    transform: translateX(20px);
+  }
+
+  /* --- Header --- */
+  .header {
+    margin-bottom: 64px;
+    transition: all 0.5s;
+  }
+  .header h1 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 3.2rem;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--text);
+    transition: color 0.5s;
+  }
+  [data-mode="anime"] .header h1 { color: #fff; }
+  .header h1 span { color: var(--accent); transition: color 0.5s; }
+
+  .header .tagline {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.5s;
+  }
+  .header .tech {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    transition: color 0.5s;
+  }
+  .header .tech span::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 1px;
+    margin-right: 6px;
+    vertical-align: middle;
+    transition: background 0.5s;
+  }
+
+  /* --- Input --- */
+  .input-group { position: relative; margin-bottom: 12px; }
+  .input-group textarea {
+    width: 100%;
+    min-height: 72px;
+    padding: 16px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 1rem;
+    font-weight: 300;
+    resize: none;
+    outline: none;
+    transition: border-color 0.2s, background 0.5s, color 0.5s, border-radius 0.5s;
+  }
+  .input-group textarea:focus { border-color: var(--accent); }
+  .input-group textarea::placeholder { color: var(--text-dim); transition: color 0.5s; }
+
+  .btn-primary {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: var(--radius);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s, background 0.5s, color 0.5s, border-radius 0.5s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-primary:active { transform: scale(0.98); }
+  [data-mode="normal"] .btn-primary { color: #fff; }
+
+  .examples {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .example {
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .example:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* --- Processing --- */
+  .pipeline { margin-top: 48px; margin-bottom: 32px; }
+  .stage {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.03em;
+    transition: border-color 0.5s;
+  }
+  .stage:first-child { border-top: 1px solid var(--border); }
+  .stage-num { width: 28px; color: var(--text-dim); transition: color 0.5s; }
+  .stage-name {
+    flex: 1;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    transition: color 0.3s;
+  }
+  .stage-status { width: 80px; text-align: right; font-size: 0.65rem; }
+
+  .stage.pending .stage-status::after { content: '---'; color: var(--text-dim); }
+  .stage.in_progress .stage-name { color: var(--accent); }
+  .stage.in_progress .stage-status { color: var(--accent); }
+  .stage.in_progress .stage-status::after { content: 'RUNNING'; animation: blink 1s step-end infinite; }
+  .stage.done .stage-name { color: var(--text); }
+  .stage.done .stage-status::after { content: 'DONE'; color: var(--text-dim); }
+
+  @keyframes blink { 50% { opacity: 0.3; } }
+
+  .status-bar {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.5s;
+  }
+  .status-bar .cursor {
+    display: inline-block;
+    width: 7px; height: 14px;
+    background: var(--accent);
+    animation: blink 0.8s step-end infinite;
+    transition: background 0.5s;
+  }
+
+  /* --- Preview --- */
+  .preview-container {
+    position: relative; width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 24px;
+    transition: border-color 0.5s, border-radius 0.5s;
+  }
+  .preview-container video { width: 100%; height: 100%; object-fit: cover; }
+  .lyric-overlay {
+    position: absolute; bottom: 16px; left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.8);
+    color: var(--accent);
+    padding: 8px 20px;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: center;
+    max-width: 90%;
+    pointer-events: none;
+    transition: opacity 0.3s, color 0.5s;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  audio { width: 100%; margin-top: 12px; }
+
+  /* --- Done --- */
+  .done-header {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+    transition: color 0.5s;
+  }
+
+  .asset-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .asset-link {
+    display: block;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: all 0.3s;
+  }
+  .asset-link:hover { border-color: var(--accent); }
+  .asset-link .label { color: var(--text-dim); display: block; margin-bottom: 4px; font-size: 0.6rem; }
+
+  .cmd-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 24px;
+    transition: all 0.5s;
+  }
+  .cmd-block .cmd-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.5s;
+  }
+  .cmd-block pre {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text);
+    white-space: pre-wrap;
+    word-break: break-all;
+    line-height: 1.6;
+    margin: 0;
+    transition: color 0.5s;
+  }
+  .btn-copy {
+    padding: 3px 10px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s;
+  }
+  .btn-copy:hover { border-color: var(--accent); color: var(--accent); }
+
+  .btn-reset {
+    display: inline-block;
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: all 0.3s;
+  }
+  .btn-reset:hover { border-color: var(--text); color: var(--text); }
+
+  /* --- History log --- */
+  .history-section {
+    margin-top: 72px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    transition: border-color 0.5s;
+  }
+  .history-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-family: var(--mono);
+  }
+  .history-title {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    transition: color 0.5s;
+  }
+  .history-count {
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+    transition: color 0.5s;
+  }
+
+  .log-row {
+    display: grid;
+    grid-template-columns: 28px 90px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    padding: 10px 4px;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: log-reveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    transition: background 0.15s, border-color 0.5s;
+    cursor: pointer;
+  }
+  .log-row:hover {
+    background: rgba(232, 255, 71, 0.04);
+  }
+  [data-mode="normal"] .log-row:hover {
+    background: rgba(212, 74, 26, 0.05);
+  }
+
+  @keyframes log-reveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .log-idx {
+    color: var(--text-dim);
+    letter-spacing: 0;
+    font-size: 0.62rem;
+  }
+  .log-thumb {
+    width: 90px;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  .log-thumb video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .log-thumb::after {
+    content: '▶';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 0.65rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    opacity: 0.5;
+    transition: opacity 0.2s;
+  }
+  .log-row:hover .log-thumb::after { opacity: 0; }
+
+  .log-meta {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .log-title {
+    color: var(--text);
+    font-size: 0.75rem;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+    transition: color 0.5s;
+  }
+  .log-prompt {
+    color: var(--text-dim);
+    font-size: 0.6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+    transition: color 0.5s;
+  }
+
+  .log-chip {
+    padding: 2px 8px;
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+  .log-chip.anime {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .log-chip.normal {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+  }
+
+  .history-empty {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-align: center;
+    padding: 24px 0;
+    letter-spacing: 0.04em;
+    transition: color 0.5s;
+  }
+
+  /* Inline playback overlay */
+  .log-playing {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    backdrop-filter: blur(12px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+  .log-playing.show { opacity: 1; pointer-events: auto; }
+  .log-playing video {
+    max-width: min(900px, 100%);
+    max-height: 80vh;
+    width: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #000;
+  }
+  .log-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 6px 14px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: all 0.2s;
+  }
+  .log-close:hover { border-color: var(--accent); color: var(--accent); }
+
+  .footer {
+    margin-top: 72px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: all 0.5s;
+  }
+  .footer a { color: var(--text-dim); text-decoration: none; }
+  .footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<!-- Mode toggle -->
+<div class="mode-toggle">
+  <span class="label active" id="label-anime">Anime</span>
+  <div class="toggle-track" onclick="toggleMode()">
+    <div class="toggle-thumb"></div>
+  </div>
+  <span class="label" id="label-normal">Normal</span>
+</div>
+
+<div class="app">
+
+  <div class="header">
+    <h1 id="title">AMV<span>.</span>Search</h1>
+    <p class="tagline">Prompt to music video in 30 seconds</p>
+    <div class="tech">
+      <span>ElevenLabs</span>
+      <span>turbopuffer</span>
+      <span id="clip-source">1,802 anime clips from YouTube</span>
+    </div>
+  </div>
+
+  <!-- ===== Input ===== -->
+  <div id="state-input">
+    <div class="input-group">
+      <textarea id="prompt" placeholder="Describe your music video..." rows="2"></textarea>
+    </div>
+    <button class="btn-primary" onclick="generate()">Generate</button>
+    <div class="examples" id="examples"></div>
+  </div>
+
+  <!-- ===== Processing ===== -->
+  <div id="state-processing" class="hidden">
+    <div class="pipeline" id="stages"></div>
+    <div class="status-bar">
+      <span class="cursor"></span>
+      <span id="status-text">Initializing...</span>
+    </div>
+
+    <div id="preview-wrap" class="hidden">
+      <div class="preview-container">
+        <video id="preview-video" muted playsinline></video>
+        <div class="lyric-overlay" id="lyric-overlay"></div>
+      </div>
+      <audio id="preview-audio" controls></audio>
+    </div>
+  </div>
+
+  <!-- ===== Done ===== -->
+  <div id="state-done" class="hidden">
+    <p class="done-header">Generation complete</p>
+
+    <div id="video-result" class="hidden" style="margin-bottom:24px;">
+      <div style="width:100%; aspect-ratio:16/9; background:#000; border:1px solid var(--border); border-radius:var(--radius); overflow:hidden;">
+        <video id="done-video" controls playsinline style="width:100%; height:100%;"></video>
+      </div>
+    </div>
+
+    <div id="fallback-render" class="hidden">
+      <div class="asset-grid" id="asset-list"></div>
+      <div class="cmd-block">
+        <div class="cmd-label">
+          <span>ffmpeg render command</span>
+          <button class="btn-copy" onclick="navigator.clipboard.writeText(document.getElementById('render-command').textContent)">Copy</button>
+        </div>
+        <pre id="render-command"></pre>
+      </div>
+    </div>
+
+    <button class="btn-reset" onclick="reset()">New generation</button>
+  </div>
+
+  <!-- ===== History Log ===== -->
+  <div class="history-section">
+    <div class="history-header">
+      <span class="history-title">// Generation log</span>
+      <span class="history-count" id="history-count"></span>
+    </div>
+    <div id="history-list"></div>
+  </div>
+
+  <div class="footer">
+    Built with <a href="https://elevenlabs.io">ElevenLabs</a> + <a href="https://turbopuffer.com">turbopuffer</a>
+  </div>
+
+</div>
+
+<!-- Video playback overlay -->
+<div class="log-playing" id="log-playing">
+  <button class="log-close" onclick="closeLogVideo()">[ESC] close</button>
+  <video id="log-video" controls playsinline></video>
+</div>
+
+<script>
+  window.BACKEND_URL = "https://tantk-music-video-gen.hf.space";
+
+  const PRESETS = {
+    anime: [
+      "Fast-paced anime opening, electric guitar, heroic vocals, 160bpm",
+      "Anime battle theme, intense orchestral with choir, 150bpm",
+      "Japanese anime ending song, acoustic guitar, bittersweet melody",
+    ],
+    normal: [
+      "Chill sunset vibes, acoustic guitar, warm vocals",
+      "Cinematic orchestral, epic mountains and nature",
+      "Upbeat pop track, city lights and street scenes",
+    ],
+  };
+
+  function getMode() {
+    return document.documentElement.getAttribute("data-mode") || "anime";
+  }
+
+  function toggleMode() {
+    const html = document.documentElement;
+    const mode = getMode() === "anime" ? "normal" : "anime";
+    html.setAttribute("data-mode", mode);
+
+    // Update title
+    document.getElementById("title").innerHTML =
+      mode === "anime" ? 'AMV<span>.</span>Search' : 'MV<span>.</span>Search';
+    document.title = mode === "anime" ? "AMV Search" : "MV Search";
+
+    // Update clip count
+    document.getElementById("clip-source").textContent =
+      mode === "anime"
+        ? "1,802 anime clips from YouTube"
+        : "434K clips from Pexels & Pixabay";
+
+    // Toggle label highlights
+    document.getElementById("label-anime").classList.toggle("active", mode === "anime");
+    document.getElementById("label-normal").classList.toggle("active", mode === "normal");
+
+    // Update example presets
+    renderExamples(mode);
+  }
+
+  function renderExamples(mode) {
+    const el = document.getElementById("examples");
+    el.innerHTML = PRESETS[mode].map(p =>
+      `<span class="example" onclick="setPrompt(this)">${p}</span>`
+    ).join("");
+  }
+
+  function setPrompt(el) {
+    document.getElementById("prompt").value = el.textContent;
+  }
+
+  // --- Generation log ---
+
+  function fmtTime(ts) {
+    if (!ts) return "--:--";
+    const d = new Date(ts * 1000);
+    const now = new Date();
+    const diffSec = (now - d) / 1000;
+    if (diffSec < 60) return "just now";
+    if (diffSec < 3600) return Math.floor(diffSec / 60) + "m ago";
+    if (diffSec < 86400) return Math.floor(diffSec / 3600) + "h ago";
+    return Math.floor(diffSec / 86400) + "d ago";
+  }
+
+  async function loadHistory() {
+    try {
+      const res = await fetch(window.BACKEND_URL + "/history");
+      if (!res.ok) return;
+      const entries = await res.json();
+      const list = document.getElementById("history-list");
+      const count = document.getElementById("history-count");
+
+      if (!entries.length) {
+        list.innerHTML = '<div class="history-empty">// no generations yet</div>';
+        count.textContent = "";
+        return;
+      }
+
+      count.textContent = entries.length + " entries";
+
+      list.innerHTML = entries.slice(0, 50).map((e, i) => {
+        const idx = String(entries.length - i).padStart(3, '0');
+        const chip = e.mode === "anime" ? "anime" : "normal";
+        const title = (e.title || "untitled").replace(/</g, "&lt;");
+        const prompt = (e.prompt || "").replace(/</g, "&lt;");
+        const ago = fmtTime(e.created_at);
+        return `<div class="log-row" style="animation-delay:${i * 30}ms" onclick="playLogVideo('${e.video_url}', '${title.replace(/'/g, "\\'")}')">
+          <span class="log-idx">[${idx}]</span>
+          <div class="log-thumb"><video muted preload="metadata" src="${e.video_url}#t=0.5"></video></div>
+          <div class="log-meta">
+            <div class="log-title">${title}</div>
+            <div class="log-prompt">${ago} · ${prompt}</div>
+          </div>
+          <span class="log-chip ${chip}">${chip}</span>
+        </div>`;
+      }).join("");
+    } catch (_) {}
+  }
+
+  function playLogVideo(url, title) {
+    const overlay = document.getElementById("log-playing");
+    const video = document.getElementById("log-video");
+    video.src = url;
+    overlay.classList.add("show");
+    video.play().catch(() => {});
+  }
+
+  function closeLogVideo() {
+    const overlay = document.getElementById("log-playing");
+    const video = document.getElementById("log-video");
+    video.pause();
+    video.src = "";
+    overlay.classList.remove("show");
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLogVideo();
+  });
+
+  // Init
+  renderExamples(getMode());
+  loadHistory();
+
+  // Refresh history after user generates (let generate() call this)
+  window.refreshHistory = loadHistory;
+</script>
+<script src="player.js"></script>
+</body>
+</html>

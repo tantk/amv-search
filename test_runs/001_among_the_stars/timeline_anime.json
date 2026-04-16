@@ -1,0 +1,47 @@
+[
+  {
+    "start_ms": 0,
+    "end_ms": 8000,
+    "lyric": "Where stone giants sleep...",
+    "section": "Intro",
+    "search_query": "Where stone giants sleep... gentle piano melody soft string swells",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s2e06\\clip_0041.mp4",
+    "clip_id": "aot_s2e06_clip_0041"
+  },
+  {
+    "start_ms": 8000,
+    "end_ms": 14000,
+    "lyric": "We climb to touch the sky,",
+    "section": "Buildup",
+    "search_query": "We climb to touch the sky, driving string ostinato building percussion",
+    "clip_path": "C:\\dev\\embeddings\\clips\\opm_s1e05\\clip_0012.mp4",
+    "clip_id": "opm_s1e05_clip_0012"
+  },
+  {
+    "start_ms": 14000,
+    "end_ms": 20000,
+    "lyric": "Higher than eagles fly!",
+    "section": "Buildup",
+    "search_query": "Higher than eagles fly! driving string ostinato building percussion",
+    "clip_path": "C:\\dev\\embeddings\\clips\\slime_ep09\\clip_0003.mp4",
+    "clip_id": "slime_ep09_clip_0003"
+  },
+  {
+    "start_ms": 20000,
+    "end_ms": 25000,
+    "lyric": "Among the stars, we write our name!",
+    "section": "Climax",
+    "search_query": "Among the stars, we write our name! full orchestra and choir soaring melody",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s3e14\\clip_0262.mp4",
+    "clip_id": "aot_s3e14_clip_0262"
+  },
+  {
+    "start_ms": 25000,
+    "end_ms": 30000,
+    "lyric": "A burning, endless flame!",
+    "section": "Climax",
+    "search_query": "A burning, endless flame! full orchestra and choir soaring melody",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s3e17\\clip_0192.mp4",
+    "clip_id": "aot_s3e17_clip_0192"
+  }
+]

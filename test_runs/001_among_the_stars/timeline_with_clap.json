@@ -1,0 +1,84 @@
+{
+  "audio_url": "/static/jobs/test_001e/audio.mp3",
+  "duration_ms": 30000,
+  "clips": [
+    {
+      "start_ms": 0,
+      "end_ms": 3159,
+      "lyric": "",
+      "section": "Intro",
+      "search_query": "Intro cinematic mood, romantic warm tender, sunrise golden light warm",
+      "video_id": "232805",
+      "source": "pixabay",
+      "category": "Summer_Beaches",
+      "caption": "a tranquil scene of nature, bathed in the warm glow of a setting or rising sun. The sun's rays filter through the tall, golden-brown grass, casting a soft light that accentuates the texture and color of the vegetation. The grass appears to be tall and dry, suggesting a late summer or early autumn season. The sun is positioned in the center of the scene, creating a lens flare effect that adds to the overall serene atmosphere. The style of the scene is reminiscent of a landscape photograph, with a",
+      "clip_path": "/home/clawd/project/elevenlabs/turbopuff/jobs/test_001e/clips/clip_0.mp4",
+      "video_url": "/static/jobs/test_001e/clips/clip_0.mp4"
+    },
+    {
+      "start_ms": 3159,
+      "end_ms": 8760,
+      "lyric": "Where stone giants sleep...",
+      "section": "Intro",
+      "search_query": "Where stone giants sleep..., romantic warm tender, sunrise golden light warm",
+      "video_id": "89245",
+      "source": "pixabay",
+      "category": "Desert_Oasis",
+      "caption": "a vast, arid landscape under the glow of a setting or rising sun. The sun is positioned in the center of the frame, casting a warm, golden light that illuminates the scene. A long, straight road stretches across the foreground, leading the viewer's eye towards the sun. The road appears to be a highway, with clear demarcations on either side. The surrounding terrain is flat and barren, with no visible vegetation or structures, suggesting a remote or deserted area. The sky is a uniform, soft orang",
+      "clip_path": "/home/clawd/project/elevenlabs/turbopuff/jobs/test_001e/clips/clip_1.mp4",
+      "video_url": "/static/jobs/test_001e/clips/clip_1.mp4"
+    },
+    {
+      "start_ms": 8819,
+      "end_ms": 14739,
+      "lyric": "We climb to touch the sky,",
+      "section": "Buildup",
+      "search_query": "We climb to touch the sky,, sunrise golden light warm, romantic warm tender",
+      "video_id": "96196",
+      "source": "pixabay",
+      "category": "Misty_Mountain_Village",
+      "caption": "a tranquil sunrise over a landscape. The sun is low on the horizon, its light diffusing through the atmosphere, creating a warm, golden glow that bathes the scene. The sky transitions from the deep orange of the sun's rays to a soft, pale blue as it stretches upwards. Below, the landscape is a tapestry of trees and fields, their forms slightly blurred, suggesting a distance from the viewpoint. The trees are densely packed, their dark silhouettes contrasting with the lighter hues of the sky. The ",
+      "clip_path": "/home/clawd/project/elevenlabs/turbopuff/jobs/test_001e/clips/clip_2.mp4",
+      "video_url": "/static/jobs/test_001e/clips/clip_2.mp4"
+    },
+    {
+      "start_ms": 15219,
+      "end_ms": 18879,
+      "lyric": "Higher than eagles fly!",
+      "section": "Buildup",
+      "search_query": "Higher than eagles fly!, joyful happy playful, sunrise golden light warm",
+      "video_id": "7593115",
+      "source": "pexels",
+      "category": "landscape",
+      "caption": "a majestic mountain range under a clear sky. The mountains are blanketed with a thick layer of snow, their peaks reaching towards the heavens. The snow appears untouched, suggesting a serene and tranquil environment. The mountains are rugged and steep, with some areas showing exposed rock, indicating a rugged and wild landscape. The perspective of the scene is from a high vantage point, looking down upon the mountains, which adds a sense of grandeur and scale to the scene. The colors in the scen",
+      "clip_path": "/home/clawd/project/elevenlabs/turbopuff/jobs/test_001e/clips/clip_3.mp4",
+      "video_url": "/static/jobs/test_001e/clips/clip_3.mp4"
+    },
+    {
+      "start_ms": 20879,
+      "end_ms": 23940,
+      "lyric": "Among the stars, we write our name!",
+      "section": "Climax",
+      "search_query": "Among the stars, we write our name!, triumphant victory celebration, sunrise golden light warm",
+      "video_id": "261936",
+      "source": "pixabay",
+      "category": "Desert_Night_Sky",
+      "caption": "a dramatic sunset scene. The sky is filled with a mix of dark, dense clouds and lighter, more wispy ones, creating a sense of depth and texture. The sun is partially obscured by the clouds, casting a warm, golden light that illuminates the sky in hues of orange and yellow. The sun's rays are visible, creating a lens flare effect that adds to the dramatic atmosphere. The style of the photograph is realistic with a focus on the natural beauty of the sky and the play of light and shadow. The compos",
+      "clip_path": "/home/clawd/project/elevenlabs/turbopuff/jobs/test_001e/clips/clip_4.mp4",
+      "video_url": "/static/jobs/test_001e/clips/clip_4.mp4"
+    },
+    {
+      "start_ms": 23979,
+      "end_ms": 29899,
+      "lyric": "A burning, endless flame!",
+      "section": "Climax",
+      "search_query": "A burning, endless flame!, triumphant victory celebration, sunrise golden light warm",
+      "video_id": "107053",
+      "source": "pixabay",
+      "category": "Snowy_Red_Plum",
+      "caption": "a scene of intense fire. The fire is consuming a structure or object, with flames engulfing it completely. The flames are bright and appear to be in motion, suggesting a rapid and intense burn. The fire is not contained within a clear boundary, and it seems to be spreading outward, possibly indicating an uncontrolled blaze. The background is dark, which contrasts with the bright orange and yellow hues of the fire, making the flames stand out prominently. There are no visible texts or distinguish",
+      "clip_path": "/home/clawd/project/elevenlabs/turbopuff/jobs/test_001e/clips/clip_5.mp4",
+      "video_url": "/static/jobs/test_001e/clips/clip_5.mp4"
+    }
+  ]
+}

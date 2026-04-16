@@ -1,0 +1,47 @@
+[
+  {
+    "start_ms": 0,
+    "end_ms": 7000,
+    "lyric": "[Intro]",
+    "section": "Intro",
+    "search_query": "rain on window sound effect gentle vinyl crackle soft, washed-out synth pad A short, dreamy lo-fi track about watching the rai",
+    "clip_path": "C:\\dev\\embeddings\\clips\\opm_s1e05\\clip_0243.mp4",
+    "clip_id": "opm_s1e05_clip_0243"
+  },
+  {
+    "start_ms": 7000,
+    "end_ms": 13500,
+    "lyric": "Little silver lines, tracing down the glass",
+    "section": "Verse",
+    "search_query": "Little silver lines, tracing down the glass soft, breathy male vocal minimal lo-fi beat enters",
+    "clip_path": "C:\\dev\\embeddings\\clips\\slime_ep09\\clip_0088.mp4",
+    "clip_id": "slime_ep09_clip_0088"
+  },
+  {
+    "start_ms": 13500,
+    "end_ms": 20000,
+    "lyric": "Streetlights bleed and blur, moments from the past",
+    "section": "Verse",
+    "search_query": "Streetlights bleed and blur, moments from the past soft, breathy male vocal minimal lo-fi beat enters",
+    "clip_path": "C:\\dev\\embeddings\\clips\\opm_s1e05\\clip_0239.mp4",
+    "clip_id": "opm_s1e05_clip_0239"
+  },
+  {
+    "start_ms": 20000,
+    "end_ms": 25000,
+    "lyric": "Watching the world wash away",
+    "section": "Outro",
+    "search_query": "Watching the world wash away vocal harmonies fading synth",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s3e14\\clip_0004.mp4",
+    "clip_id": "aot_s3e14_clip_0004"
+  },
+  {
+    "start_ms": 25000,
+    "end_ms": 30000,
+    "lyric": "Just for today",
+    "section": "Outro",
+    "search_query": "Just for today vocal harmonies fading synth",
+    "clip_path": "C:\\dev\\embeddings\\clips\\demon_daughter_ep01\\clip_0237.mp4",
+    "clip_id": "demon_daughter_ep01_clip_0237"
+  }
+]

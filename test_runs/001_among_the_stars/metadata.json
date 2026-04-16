@@ -1,0 +1,224 @@
+{
+  "composition_plan": {
+    "positive_global_styles": [
+      "epic cinematic",
+      "orchestral",
+      "adventurous",
+      "powerful",
+      "inspirational",
+      "female choir",
+      "soaring melody"
+    ],
+    "negative_global_styles": [
+      "electronic",
+      "lo-fi",
+      "sad",
+      "somber",
+      "minimalist"
+    ],
+    "sections": [
+      {
+        "section_name": "Intro",
+        "positive_local_styles": [
+          "gentle piano melody",
+          "soft string swells",
+          "ethereal female choir",
+          "sense of wonder",
+          "slow build"
+        ],
+        "negative_local_styles": [
+          "percussion",
+          "loud brass",
+          "aggressive"
+        ],
+        "duration_ms": 8000,
+        "lines": [
+          "Where stone giants sleep..."
+        ]
+      },
+      {
+        "section_name": "Buildup",
+        "positive_local_styles": [
+          "driving string ostinato",
+          "building percussion",
+          "rising dynamics",
+          "powerful female choir",
+          "added brass fanfares",
+          "sense of climbing"
+        ],
+        "negative_local_styles": [
+          "piano",
+          "quiet",
+          "static energy"
+        ],
+        "duration_ms": 12000,
+        "lines": [
+          "We climb to touch the sky,",
+          "Higher than eagles fly!"
+        ]
+      },
+      {
+        "section_name": "Climax",
+        "positive_local_styles": [
+          "full orchestra and choir",
+          "soaring melody",
+          "epic brass theme",
+          "powerful cymbal crashes",
+          "majestic feeling",
+          "layered vocals"
+        ],
+        "negative_local_styles": [
+          "sparse instrumentation",
+          "whispering",
+          "subtle"
+        ],
+        "duration_ms": 10000,
+        "lines": [
+          "Among the stars, we write our name!",
+          "A burning, endless flame!"
+        ]
+      }
+    ]
+  },
+  "song_metadata": {
+    "title": "Among The Stars",
+    "description": "An epic cinematic orchestral piece about the majestic journey of exploring mountains and reaching for the stars. The music builds from a gentle, wondrous opening to a powerful, soaring climax with a full orchestra and choir.",
+    "genres": [
+      "cinematic",
+      "orchestral",
+      "epic music",
+      "soundtrack"
+    ],
+    "languages": [
+      "English"
+    ],
+    "is_explicit": false
+  },
+  "words_timestamps": [
+    {
+      "word": "Where",
+      "start_ms": 3159,
+      "end_ms": 3959
+    },
+    {
+      "word": "stone",
+      "start_ms": 4079,
+      "end_ms": 5000
+    },
+    {
+      "word": "giants",
+      "start_ms": 5119,
+      "end_ms": 6259
+    },
+    {
+      "word": "sleep...",
+      "start_ms": 6259,
+      "end_ms": 8760
+    },
+    {
+      "word": "We",
+      "start_ms": 8819,
+      "end_ms": 9079
+    },
+    {
+      "word": "climb",
+      "start_ms": 9199,
+      "end_ms": 10579
+    },
+    {
+      "word": "to",
+      "start_ms": 10639,
+      "end_ms": 11259
+    },
+    {
+      "word": "touch",
+      "start_ms": 11439,
+      "end_ms": 11819
+    },
+    {
+      "word": "the",
+      "start_ms": 11880,
+      "end_ms": 11960
+    },
+    {
+      "word": "sky,",
+      "start_ms": 12079,
+      "end_ms": 14739
+    },
+    {
+      "word": "Higher",
+      "start_ms": 15219,
+      "end_ms": 16539
+    },
+    {
+      "word": "than",
+      "start_ms": 16659,
+      "end_ms": 17319
+    },
+    {
+      "word": "eagles",
+      "start_ms": 17420,
+      "end_ms": 18039
+    },
+    {
+      "word": "fly!",
+      "start_ms": 18159,
+      "end_ms": 18879
+    },
+    {
+      "word": "Among",
+      "start_ms": 20879,
+      "end_ms": 21479
+    },
+    {
+      "word": "the",
+      "start_ms": 21559,
+      "end_ms": 21760
+    },
+    {
+      "word": "stars,",
+      "start_ms": 21799,
+      "end_ms": 22340
+    },
+    {
+      "word": "we",
+      "start_ms": 22340,
+      "end_ms": 22619
+    },
+    {
+      "word": "write",
+      "start_ms": 22719,
+      "end_ms": 23239
+    },
+    {
+      "word": "our",
+      "start_ms": 23299,
+      "end_ms": 23380
+    },
+    {
+      "word": "name!",
+      "start_ms": 23539,
+      "end_ms": 23940
+    },
+    {
+      "word": "A",
+      "start_ms": 23979,
+      "end_ms": 24100
+    },
+    {
+      "word": "burning,",
+      "start_ms": 24219,
+      "end_ms": 25619
+    },
+    {
+      "word": "endless",
+      "start_ms": 25760,
+      "end_ms": 27760
+    },
+    {
+      "word": "flame!",
+      "start_ms": 27760,
+      "end_ms": 29899
+    }
+  ]
+}

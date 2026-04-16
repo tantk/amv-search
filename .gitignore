@@ -1,0 +1,25 @@
+.venv/
+.env*
+jobs/
+__pycache__/
+*.pyc
+embed_batch.jsonl
+
+# Media and large files
+clips/
+frames/
+downloads/
+reference/
+vectors_*.npy
+anime_captions.json
+intro_slides/
+
+# Generated videos and audio
+*.mp3
+*.mp4
+
+# Keep intro deck and GitHub Pages assets
+!intro/intro_deck.html
+!docs/
+test_runs_local/
+archive/

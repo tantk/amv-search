@@ -1,0 +1,101 @@
+[
+  {
+    "start_ms": 0,
+    "end_ms": 3500,
+    "lyric": "Shinku no sora wo kirisaite",
+    "section": "Intro",
+    "search_query": "Shinku no sora wo kirisaite explosive drum fill fast guitar riff",
+    "clip_path": "C:\\dev\\embeddings\\clips\\opm_s1e05\\clip_0106.mp4",
+    "clip_id": "opm_s1e05_clip_0106"
+  },
+  {
+    "start_ms": 3500,
+    "end_ms": 7000,
+    "lyric": "(Screaming through the crimson sky)",
+    "section": "Intro",
+    "search_query": "(Screaming through the crimson sky) explosive drum fill fast guitar riff",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s3e14\\clip_0252.mp4",
+    "clip_id": "aot_s3e14_clip_0252"
+  },
+  {
+    "start_ms": 7000,
+    "end_ms": 9000,
+    "lyric": "Unmei no ito taguri yosete",
+    "section": "Verse",
+    "search_query": "Unmei no ito taguri yosete driving rhythm palm-muted guitar",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s2e06\\clip_0198.mp4",
+    "clip_id": "aot_s2e06_clip_0198"
+  },
+  {
+    "start_ms": 9000,
+    "end_ms": 11000,
+    "lyric": "(Pulling the threads of fate closer)",
+    "section": "Verse",
+    "search_query": "(Pulling the threads of fate closer) driving rhythm palm-muted guitar",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s1e01\\clip_0088.mp4",
+    "clip_id": "aot_s1e01_clip_0088"
+  },
+  {
+    "start_ms": 11000,
+    "end_ms": 13000,
+    "lyric": "Kowasenai mono mamoru tame ni",
+    "section": "Verse",
+    "search_query": "Kowasenai mono mamoru tame ni driving rhythm palm-muted guitar",
+    "clip_path": "C:\\dev\\embeddings\\clips\\opm_s1e05\\clip_0243.mp4",
+    "clip_id": "opm_s1e05_clip_0243"
+  },
+  {
+    "start_ms": 13000,
+    "end_ms": 15000,
+    "lyric": "(To protect the unbreakable)",
+    "section": "Verse",
+    "search_query": "(To protect the unbreakable) driving rhythm palm-muted guitar",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s3e17\\clip_0009.mp4",
+    "clip_id": "aot_s3e17_clip_0009"
+  },
+  {
+    "start_ms": 15000,
+    "end_ms": 18000,
+    "lyric": "Akiramenai kono te de!",
+    "section": "Chorus",
+    "search_query": "Akiramenai kono te de! soaring chorus epic melody",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s1e01\\clip_0023.mp4",
+    "clip_id": "aot_s1e01_clip_0023"
+  },
+  {
+    "start_ms": 18000,
+    "end_ms": 21000,
+    "lyric": "(I won't give up with these hands!)",
+    "section": "Chorus",
+    "search_query": "(I won't give up with these hands!) soaring chorus epic melody",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s3e14\\clip_0120.mp4",
+    "clip_id": "aot_s3e14_clip_0120"
+  },
+  {
+    "start_ms": 21000,
+    "end_ms": 24000,
+    "lyric": "Mirai wo tsukamu, hikari ni nare!",
+    "section": "Chorus",
+    "search_query": "Mirai wo tsukamu, hikari ni nare! soaring chorus epic melody",
+    "clip_path": "C:\\dev\\embeddings\\clips\\opm_s1e05\\clip_0236.mp4",
+    "clip_id": "opm_s1e05_clip_0236"
+  },
+  {
+    "start_ms": 24000,
+    "end_ms": 27000,
+    "lyric": "(Seize the future, become the light!)",
+    "section": "Chorus",
+    "search_query": "(Seize the future, become the light!) soaring chorus epic melody",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s1e01\\clip_0042.mp4",
+    "clip_id": "aot_s1e01_clip_0042"
+  },
+  {
+    "start_ms": 27000,
+    "end_ms": 30000,
+    "lyric": "Phoenix!",
+    "section": "Chorus",
+    "search_query": "Phoenix! soaring chorus epic melody",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s3e17\\clip_0183.mp4",
+    "clip_id": "aot_s3e17_clip_0183"
+  }
+]

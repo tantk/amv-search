@@ -1,0 +1,214 @@
+{
+  "composition_plan": {
+    "positive_global_styles": [
+      "lo-fi",
+      "dreamy",
+      "chillwave",
+      "ambient",
+      "relaxing",
+      "atmospheric",
+      "rain sounds",
+      "gentle",
+      "mellow",
+      "soft male vocals",
+      "introspective"
+    ],
+    "negative_global_styles": [
+      "upbeat",
+      "loud",
+      "energetic",
+      "harsh",
+      "rock",
+      "pop"
+    ],
+    "sections": [
+      {
+        "section_name": "Intro",
+        "positive_local_styles": [
+          "rain on window sound effect",
+          "gentle vinyl crackle",
+          "soft, washed-out synth pad",
+          "mellow Rhodes piano"
+        ],
+        "negative_local_styles": [
+          "vocals",
+          "drums",
+          "loud instruments"
+        ],
+        "duration_ms": 7000,
+        "lines": []
+      },
+      {
+        "section_name": "Verse",
+        "positive_local_styles": [
+          "soft, breathy male vocal",
+          "minimal lo-fi beat enters",
+          "warm bassline",
+          "dreamy delivery",
+          "reverb on vocals"
+        ],
+        "negative_local_styles": [
+          "shouting",
+          "aggressive",
+          "fast tempo"
+        ],
+        "duration_ms": 13000,
+        "lines": [
+          "Little silver lines, tracing down the glass",
+          "Streetlights bleed and blur, moments from the past"
+        ]
+      },
+      {
+        "section_name": "Outro",
+        "positive_local_styles": [
+          "vocal harmonies",
+          "fading synth",
+          "beat continues and slowly fades",
+          "rain sound becomes more prominent",
+          "ethereal feel"
+        ],
+        "negative_local_styles": [
+          "abrupt stop",
+          "new instruments",
+          "loud"
+        ],
+        "duration_ms": 10000,
+        "lines": [
+          "Watching the world wash away",
+          "Just for today"
+        ]
+      }
+    ]
+  },
+  "song_metadata": {
+    "title": "Windowpane Dreams",
+    "description": "A short, dreamy lo-fi track about watching the rain fall on a window at night. Featuring soft male vocals, gentle synth pads, a mellow Rhodes piano, and the calming sound of rain, creating a peaceful and introspective atmosphere.",
+    "genres": [
+      "lo-fi",
+      "chillwave",
+      "ambient",
+      "dream pop"
+    ],
+    "languages": [
+      "English"
+    ],
+    "is_explicit": false
+  },
+  "words_timestamps": [
+    {
+      "word": "Little",
+      "start_ms": 10399,
+      "end_ms": 10859
+    },
+    {
+      "word": "silver",
+      "start_ms": 10939,
+      "end_ms": 11539
+    },
+    {
+      "word": "lines,",
+      "start_ms": 11639,
+      "end_ms": 12520
+    },
+    {
+      "word": "tracing",
+      "start_ms": 12559,
+      "end_ms": 13159
+    },
+    {
+      "word": "down",
+      "start_ms": 13219,
+      "end_ms": 13839
+    },
+    {
+      "word": "the",
+      "start_ms": 13899,
+      "end_ms": 14000
+    },
+    {
+      "word": "glass",
+      "start_ms": 14099,
+      "end_ms": 14779
+    },
+    {
+      "word": "Streetlights",
+      "start_ms": 14799,
+      "end_ms": 15399
+    },
+    {
+      "word": "bleed",
+      "start_ms": 15460,
+      "end_ms": 15879
+    },
+    {
+      "word": "and",
+      "start_ms": 15920,
+      "end_ms": 16120
+    },
+    {
+      "word": "blur,",
+      "start_ms": 16119,
+      "end_ms": 17039
+    },
+    {
+      "word": "moments",
+      "start_ms": 17260,
+      "end_ms": 17640
+    },
+    {
+      "word": "from",
+      "start_ms": 17680,
+      "end_ms": 18339
+    },
+    {
+      "word": "the",
+      "start_ms": 18359,
+      "end_ms": 18520
+    },
+    {
+      "word": "past",
+      "start_ms": 18600,
+      "end_ms": 19420
+    },
+    {
+      "word": "Watching",
+      "start_ms": 20719,
+      "end_ms": 21280
+    },
+    {
+      "word": "the",
+      "start_ms": 21319,
+      "end_ms": 21459
+    },
+    {
+      "word": "world",
+      "start_ms": 21579,
+      "end_ms": 22319
+    },
+    {
+      "word": "wash",
+      "start_ms": 22399,
+      "end_ms": 22739
+    },
+    {
+      "word": "away",
+      "start_ms": 22819,
+      "end_ms": 23699
+    },
+    {
+      "word": "Just",
+      "start_ms": 23959,
+      "end_ms": 24120
+    },
+    {
+      "word": "for",
+      "start_ms": 24199,
+      "end_ms": 24680
+    },
+    {
+      "word": "today",
+      "start_ms": 24939,
+      "end_ms": 25639
+    }
+  ]
+}

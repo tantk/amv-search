@@ -1,0 +1,84 @@
+{
+  "audio_url": "/static/jobs/test_001c/audio.mp3",
+  "duration_ms": 30000,
+  "clips": [
+    {
+      "start_ms": 0,
+      "end_ms": 3159,
+      "lyric": "",
+      "section": "Intro",
+      "search_query": "Intro cinematic mood",
+      "video_id": "6993379",
+      "source": "pexels",
+      "category": "landscape",
+      "caption": "no description",
+      "clip_path": "/home/clawd/project/elevenlabs/turbopuff/jobs/test_001c/clips/clip_0.mp4",
+      "video_url": "/static/jobs/test_001c/clips/clip_0.mp4"
+    },
+    {
+      "start_ms": 3159,
+      "end_ms": 8760,
+      "lyric": "Where stone giants sleep...",
+      "section": "Intro",
+      "search_query": "Where stone giants sleep...",
+      "video_id": "334331",
+      "source": "pixabay",
+      "category": "Rainbow_Bridge",
+      "caption": "a dynamic and abstract scene. It features a fluid, wavy pattern that dominates the background, creating a sense of movement and depth. The color palette is predominantly dark, with shades of blue and black, which gives the scene a mysterious and possibly underwater feel.  Scattered throughout the scene are small, bright blue circles that appear to be floating or drifting. These circles add a sense of life or activity to the otherwise tranquil background. The overall style of the scene is modern ",
+      "clip_path": "/home/clawd/project/elevenlabs/turbopuff/jobs/test_001c/clips/clip_1.mp4",
+      "video_url": "/static/jobs/test_001c/clips/clip_1.mp4"
+    },
+    {
+      "start_ms": 8819,
+      "end_ms": 14739,
+      "lyric": "We climb to touch the sky,",
+      "section": "Buildup",
+      "search_query": "We climb to touch the sky,",
+      "video_id": "3736778",
+      "source": "pexels",
+      "category": "landscape",
+      "caption": "a breathtaking aerial view of a vast expanse of clouds, stretching out to meet the horizon. The sky above is a clear, vibrant blue, with a few wispy clouds scattered across it. The sun is setting, casting a warm, golden glow over the scene, which is reflected in the clouds below, creating a beautiful contrast between the cool blue of the sky and the warm hues of the sunlit clouds. The sun's rays are visible, creating a lens flare effect that adds to the dramatic and serene atmosphere of the scen",
+      "clip_path": "/home/clawd/project/elevenlabs/turbopuff/jobs/test_001c/clips/clip_2.mp4",
+      "video_url": "/static/jobs/test_001c/clips/clip_2.mp4"
+    },
+    {
+      "start_ms": 15219,
+      "end_ms": 18879,
+      "lyric": "Higher than eagles fly!",
+      "section": "Buildup",
+      "search_query": "Higher than eagles fly!",
+      "video_id": "326136",
+      "source": "pixabay",
+      "category": "Nature_Reserves",
+      "caption": "a vast expanse of the sky, filled with a multitude of clouds. The clouds are predominantly white, with some areas exhibiting a light gray hue, suggesting varying levels of cloud density. They are scattered across the sky, some appearing closer to the viewer due to their larger size, while others are smaller and more distant. The sky itself is a deep blue, with a few areas where the clouds cast a subtle shadow, indicating the presence of the sun. The overall style of the scene is a naturalistic p",
+      "clip_path": "/home/clawd/project/elevenlabs/turbopuff/jobs/test_001c/clips/clip_3.mp4",
+      "video_url": "/static/jobs/test_001c/clips/clip_3.mp4"
+    },
+    {
+      "start_ms": 20879,
+      "end_ms": 23940,
+      "lyric": "Among the stars, we write our name!",
+      "section": "Climax",
+      "search_query": "Among the stars, we write our name!",
+      "video_id": "7168631",
+      "source": "pexels",
+      "category": "landscape",
+      "caption": "a bustling cityscape under a clear sky. Dominating the scene are several tall buildings, their facades a mix of reflective glass and concrete. The architecture is modern, with a variety of designs and heights that create a dynamic skyline. The buildings are clustered closely together, suggesting a dense urban environment.  The most prominent feature is a large, illuminated sign on one of the buildings that reads \"EMAAR\". The sign is bright and stands out against the backdrop of the city. The lig",
+      "clip_path": "/home/clawd/project/elevenlabs/turbopuff/jobs/test_001c/clips/clip_4.mp4",
+      "video_url": "/static/jobs/test_001c/clips/clip_4.mp4"
+    },
+    {
+      "start_ms": 23979,
+      "end_ms": 29899,
+      "lyric": "A burning, endless flame!",
+      "section": "Climax",
+      "search_query": "A burning, endless flame!",
+      "video_id": "107053",
+      "source": "pixabay",
+      "category": "Snowy_Red_Plum",
+      "caption": "a scene of intense fire. The fire is consuming a structure or object, with flames engulfing it completely. The flames are bright and appear to be in motion, suggesting a rapid and intense burn. The fire is not contained within a clear boundary, and it seems to be spreading outward, possibly indicating an uncontrolled blaze. The background is dark, which contrasts with the bright orange and yellow hues of the fire, making the flames stand out prominently. There are no visible texts or distinguish",
+      "clip_path": "/home/clawd/project/elevenlabs/turbopuff/jobs/test_001c/clips/clip_5.mp4",
+      "video_url": "/static/jobs/test_001c/clips/clip_5.mp4"
+    }
+  ]
+}

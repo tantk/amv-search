@@ -1,0 +1,379 @@
+{
+  "composition_plan": {
+    "positive_global_styles": [
+      "anime opening",
+      "j-rock",
+      "epic rock",
+      "fast tempo",
+      "driving guitars",
+      "powerful drums",
+      "energetic",
+      "emotional",
+      "female vocals",
+      "japanese rock"
+    ],
+    "negative_global_styles": [
+      "slow",
+      "acoustic",
+      "lo-fi",
+      "male vocals",
+      "calm",
+      "country"
+    ],
+    "sections": [
+      {
+        "section_name": "Intro",
+        "positive_local_styles": [
+          "explosive drum fill",
+          "fast guitar riff",
+          "high energy",
+          "powerful female vocals",
+          "urgent delivery"
+        ],
+        "negative_local_styles": [
+          "slow build-up",
+          "quiet intro",
+          "whispering"
+        ],
+        "duration_ms": 7000,
+        "lines": [
+          "Shinku no sora wo kirisaite",
+          "(Screaming through the crimson sky)"
+        ]
+      },
+      {
+        "section_name": "Verse",
+        "positive_local_styles": [
+          "driving rhythm",
+          "palm-muted guitar",
+          "fast-paced vocal delivery",
+          "determined tone",
+          "pulsing bassline"
+        ],
+        "negative_local_styles": [
+          "ballad feel",
+          "acoustic guitar",
+          "soft vocals"
+        ],
+        "duration_ms": 8000,
+        "lines": [
+          "Unmei no ito taguri yosete",
+          "(Pulling the threads of fate closer)",
+          "Kowasenai mono mamoru tame ni",
+          "(To protect the unbreakable)"
+        ]
+      },
+      {
+        "section_name": "Chorus",
+        "positive_local_styles": [
+          "soaring chorus",
+          "epic melody",
+          "layered vocals",
+          "powerful female voice",
+          "crashing cymbals",
+          "emotional climax",
+          "open chords"
+        ],
+        "negative_local_styles": [
+          "minimalist",
+          "spoken word",
+          "understated"
+        ],
+        "duration_ms": 15000,
+        "lines": [
+          "Akiramenai kono te de!",
+          "(I won't give up with these hands!)",
+          "Mirai wo tsukamu, hikari ni nare!",
+          "(Seize the future, become the light!)",
+          "Phoenix!"
+        ]
+      }
+    ]
+  },
+  "song_metadata": {
+    "title": "Crimson Phoenix",
+    "description": "An energetic and emotional anime opening theme song in the J-Rock style. Features powerful female vocals, driving guitars, and a soaring, epic chorus with layered harmonies. The Japanese lyrics speak of fighting against destiny and protecting what is precious.",
+    "genres": [
+      "anime",
+      "j-rock",
+      "rock",
+      "epic"
+    ],
+    "languages": [
+      "Japanese"
+    ],
+    "is_explicit": false
+  },
+  "words_timestamps": [
+    {
+      "word": "Shinku",
+      "start_ms": 859,
+      "end_ms": 1679
+    },
+    {
+      "word": "no",
+      "start_ms": 1779,
+      "end_ms": 2319
+    },
+    {
+      "word": "sora",
+      "start_ms": 2899,
+      "end_ms": 3359
+    },
+    {
+      "word": "wo",
+      "start_ms": 3460,
+      "end_ms": 3799
+    },
+    {
+      "word": "kirisaite",
+      "start_ms": 4219,
+      "end_ms": 6099
+    },
+    {
+      "word": "(Screaming",
+      "start_ms": 6779,
+      "end_ms": 7119
+    },
+    {
+      "word": "through",
+      "start_ms": 7199,
+      "end_ms": 7559
+    },
+    {
+      "word": "the",
+      "start_ms": 7539,
+      "end_ms": 7619
+    },
+    {
+      "word": "crimson",
+      "start_ms": 7639,
+      "end_ms": 7980
+    },
+    {
+      "word": "sky)",
+      "start_ms": 8059,
+      "end_ms": 8439
+    },
+    {
+      "word": "Unmei",
+      "start_ms": 8539,
+      "end_ms": 8880
+    },
+    {
+      "word": "no",
+      "start_ms": 8920,
+      "end_ms": 9039
+    },
+    {
+      "word": "ito",
+      "start_ms": 9099,
+      "end_ms": 9359
+    },
+    {
+      "word": "taguri",
+      "start_ms": 9399,
+      "end_ms": 9719
+    },
+    {
+      "word": "yosete",
+      "start_ms": 9760,
+      "end_ms": 10559
+    },
+    {
+      "word": "(Pulling",
+      "start_ms": 10779,
+      "end_ms": 10860
+    },
+    {
+      "word": "the",
+      "start_ms": 10840,
+      "end_ms": 10880
+    },
+    {
+      "word": "threads",
+      "start_ms": 10939,
+      "end_ms": 11140
+    },
+    {
+      "word": "of",
+      "start_ms": 11139,
+      "end_ms": 11159
+    },
+    {
+      "word": "fate",
+      "start_ms": 11239,
+      "end_ms": 11420
+    },
+    {
+      "word": "closer)",
+      "start_ms": 11460,
+      "end_ms": 11920
+    },
+    {
+      "word": "Kowasenai",
+      "start_ms": 11979,
+      "end_ms": 12460
+    },
+    {
+      "word": "mono",
+      "start_ms": 12460,
+      "end_ms": 12779
+    },
+    {
+      "word": "mamoru",
+      "start_ms": 12779,
+      "end_ms": 13119
+    },
+    {
+      "word": "tame",
+      "start_ms": 13139,
+      "end_ms": 13400
+    },
+    {
+      "word": "ni",
+      "start_ms": 13460,
+      "end_ms": 14259
+    },
+    {
+      "word": "(To",
+      "start_ms": 14259,
+      "end_ms": 14400
+    },
+    {
+      "word": "protect",
+      "start_ms": 14420,
+      "end_ms": 14440
+    },
+    {
+      "word": "the",
+      "start_ms": 14420,
+      "end_ms": 14599
+    },
+    {
+      "word": "unbreakable)",
+      "start_ms": 14659,
+      "end_ms": 15600
+    },
+    {
+      "word": "Akiramenai",
+      "start_ms": 15699,
+      "end_ms": 17700
+    },
+    {
+      "word": "kono",
+      "start_ms": 17799,
+      "end_ms": 18120
+    },
+    {
+      "word": "te",
+      "start_ms": 18199,
+      "end_ms": 18420
+    },
+    {
+      "word": "de!",
+      "start_ms": 18399,
+      "end_ms": 19440
+    },
+    {
+      "word": "(I",
+      "start_ms": 19439,
+      "end_ms": 19720
+    },
+    {
+      "word": "won't",
+      "start_ms": 19760,
+      "end_ms": 20079
+    },
+    {
+      "word": "give",
+      "start_ms": 20139,
+      "end_ms": 20360
+    },
+    {
+      "word": "up",
+      "start_ms": 20439,
+      "end_ms": 20540
+    },
+    {
+      "word": "with",
+      "start_ms": 21279,
+      "end_ms": 21760
+    },
+    {
+      "word": "these",
+      "start_ms": 21779,
+      "end_ms": 21879
+    },
+    {
+      "word": "hands!)",
+      "start_ms": 21859,
+      "end_ms": 22399
+    },
+    {
+      "word": "Mirai",
+      "start_ms": 22420,
+      "end_ms": 23000
+    },
+    {
+      "word": "wo",
+      "start_ms": 23059,
+      "end_ms": 23180
+    },
+    {
+      "word": "tsukamu,",
+      "start_ms": 23199,
+      "end_ms": 24280
+    },
+    {
+      "word": "hikari",
+      "start_ms": 24319,
+      "end_ms": 24920
+    },
+    {
+      "word": "ni",
+      "start_ms": 24959,
+      "end_ms": 25159
+    },
+    {
+      "word": "nare!",
+      "start_ms": 25180,
+      "end_ms": 25379
+    },
+    {
+      "word": "(Seize",
+      "start_ms": 25379,
+      "end_ms": 25659
+    },
+    {
+      "word": "the",
+      "start_ms": 25739,
+      "end_ms": 25979
+    },
+    {
+      "word": "future,",
+      "start_ms": 26059,
+      "end_ms": 26340
+    },
+    {
+      "word": "become",
+      "start_ms": 26359,
+      "end_ms": 26920
+    },
+    {
+      "word": "the",
+      "start_ms": 26959,
+      "end_ms": 27000
+    },
+    {
+      "word": "light!)",
+      "start_ms": 27019,
+      "end_ms": 27340
+    },
+    {
+      "word": "Phoenix!",
+      "start_ms": 27340,
+      "end_ms": 28299
+    }
+  ]
+}

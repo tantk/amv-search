@@ -1,0 +1,367 @@
+{
+  "composition_plan": {
+    "positive_global_styles": [
+      "anime opening",
+      "epic rock",
+      "j-rock",
+      "powerful female vocals",
+      "fast tempo",
+      "driving drums",
+      "intense energy"
+    ],
+    "negative_global_styles": [
+      "slow",
+      "acoustic",
+      "calm",
+      "lo-fi",
+      "male vocals"
+    ],
+    "sections": [
+      {
+        "section_name": "Intro",
+        "positive_local_styles": [
+          "fast electric guitar riff",
+          "rapid drum fill",
+          "explosive start",
+          "high energy"
+        ],
+        "negative_local_styles": [
+          "vocals",
+          "slow tempo",
+          "piano"
+        ],
+        "duration_ms": 3000,
+        "lines": []
+      },
+      {
+        "section_name": "Verse",
+        "positive_local_styles": [
+          "powerful female lead vocal",
+          "driving bassline",
+          "fast-paced drumming",
+          "energetic delivery"
+        ],
+        "negative_local_styles": [
+          "choir",
+          "slow ballad",
+          "acoustic guitar"
+        ],
+        "duration_ms": 9000,
+        "lines": [
+          "Tangled in these silver chains, a prisoner to the night,",
+          "But a fire in my heart ignites, a burning, guiding light!"
+        ]
+      },
+      {
+        "section_name": "Pre-Chorus",
+        "positive_local_styles": [
+          "building tension",
+          "rising vocal melody",
+          "intense drum build",
+          "anticipation"
+        ],
+        "negative_local_styles": [
+          "calm",
+          "sparse",
+          "anticlimactic"
+        ],
+        "duration_ms": 6000,
+        "lines": [
+          "For you I'll face the endless dark, and tear the shadows down!"
+        ]
+      },
+      {
+        "section_name": "Chorus",
+        "positive_local_styles": [
+          "soaring female vocals",
+          "epic and emotional chorus",
+          "layered vocal harmonies",
+          "fast electric guitars",
+          "crashing cymbals",
+          "cathartic release"
+        ],
+        "negative_local_styles": [
+          "quiet",
+          "spoken word",
+          "monotone"
+        ],
+        "duration_ms": 12000,
+        "lines": [
+          "Breaking free, our fates entwined!",
+          "My soul will rise, a brand new star,",
+          "This power is forever mine!"
+        ]
+      }
+    ]
+  },
+  "song_metadata": {
+    "title": "Ignite the Dawn",
+    "description": "An epic rock anime opening theme in English. It features powerful female vocals, fast electric guitars, and driving drums. The song builds from an intense verse about breaking free into a soaring, emotional chorus about fighting to protect loved ones and rising into the light.",
+    "genres": [
+      "anime",
+      "j-rock",
+      "epic rock"
+    ],
+    "languages": [
+      "English"
+    ],
+    "is_explicit": false
+  },
+  "words_timestamps": [
+    {
+      "word": "Tangled",
+      "start_ms": 2839,
+      "end_ms": 3279
+    },
+    {
+      "word": "in",
+      "start_ms": 3299,
+      "end_ms": 3379
+    },
+    {
+      "word": "these",
+      "start_ms": 3399,
+      "end_ms": 3579
+    },
+    {
+      "word": "silver",
+      "start_ms": 3579,
+      "end_ms": 3859
+    },
+    {
+      "word": "chains,",
+      "start_ms": 3919,
+      "end_ms": 4139
+    },
+    {
+      "word": "a",
+      "start_ms": 4139,
+      "end_ms": 4259
+    },
+    {
+      "word": "prisoner",
+      "start_ms": 4279,
+      "end_ms": 4959
+    },
+    {
+      "word": "to",
+      "start_ms": 4980,
+      "end_ms": 5339
+    },
+    {
+      "word": "the",
+      "start_ms": 5359,
+      "end_ms": 5440
+    },
+    {
+      "word": "night,",
+      "start_ms": 5559,
+      "end_ms": 7619
+    },
+    {
+      "word": "But",
+      "start_ms": 8179,
+      "end_ms": 8380
+    },
+    {
+      "word": "a",
+      "start_ms": 8399,
+      "end_ms": 8479
+    },
+    {
+      "word": "fire",
+      "start_ms": 8559,
+      "end_ms": 8880
+    },
+    {
+      "word": "in",
+      "start_ms": 8920,
+      "end_ms": 9020
+    },
+    {
+      "word": "my",
+      "start_ms": 9059,
+      "end_ms": 9199
+    },
+    {
+      "word": "heart",
+      "start_ms": 9199,
+      "end_ms": 9420
+    },
+    {
+      "word": "ignites,",
+      "start_ms": 9460,
+      "end_ms": 9800
+    },
+    {
+      "word": "a",
+      "start_ms": 9819,
+      "end_ms": 9880
+    },
+    {
+      "word": "burning,",
+      "start_ms": 9960,
+      "end_ms": 10619
+    },
+    {
+      "word": "guiding",
+      "start_ms": 10639,
+      "end_ms": 11220
+    },
+    {
+      "word": "light!",
+      "start_ms": 11359,
+      "end_ms": 12539
+    },
+    {
+      "word": "For",
+      "start_ms": 12579,
+      "end_ms": 12719
+    },
+    {
+      "word": "you",
+      "start_ms": 12799,
+      "end_ms": 12960
+    },
+    {
+      "word": "I'll",
+      "start_ms": 13039,
+      "end_ms": 13239
+    },
+    {
+      "word": "face",
+      "start_ms": 13279,
+      "end_ms": 13619
+    },
+    {
+      "word": "the",
+      "start_ms": 13699,
+      "end_ms": 13979
+    },
+    {
+      "word": "endless",
+      "start_ms": 14119,
+      "end_ms": 14679
+    },
+    {
+      "word": "dark,",
+      "start_ms": 14739,
+      "end_ms": 15399
+    },
+    {
+      "word": "and",
+      "start_ms": 15420,
+      "end_ms": 15539
+    },
+    {
+      "word": "tear",
+      "start_ms": 15599,
+      "end_ms": 15899
+    },
+    {
+      "word": "the",
+      "start_ms": 15939,
+      "end_ms": 16000
+    },
+    {
+      "word": "shadows",
+      "start_ms": 16139,
+      "end_ms": 16799
+    },
+    {
+      "word": "down!",
+      "start_ms": 16879,
+      "end_ms": 17979
+    },
+    {
+      "word": "Breaking",
+      "start_ms": 18399,
+      "end_ms": 18780
+    },
+    {
+      "word": "free,",
+      "start_ms": 18920,
+      "end_ms": 19319
+    },
+    {
+      "word": "our",
+      "start_ms": 19379,
+      "end_ms": 19579
+    },
+    {
+      "word": "fates",
+      "start_ms": 19659,
+      "end_ms": 20040
+    },
+    {
+      "word": "entwined!",
+      "start_ms": 20059,
+      "end_ms": 21020
+    },
+    {
+      "word": "My",
+      "start_ms": 21039,
+      "end_ms": 21180
+    },
+    {
+      "word": "soul",
+      "start_ms": 21239,
+      "end_ms": 21539
+    },
+    {
+      "word": "will",
+      "start_ms": 21600,
+      "end_ms": 21739
+    },
+    {
+      "word": "rise,",
+      "start_ms": 21819,
+      "end_ms": 22279
+    },
+    {
+      "word": "a",
+      "start_ms": 22340,
+      "end_ms": 22399
+    },
+    {
+      "word": "brand",
+      "start_ms": 22479,
+      "end_ms": 22799
+    },
+    {
+      "word": "new",
+      "start_ms": 22840,
+      "end_ms": 23059
+    },
+    {
+      "word": "star,",
+      "start_ms": 23139,
+      "end_ms": 23760
+    },
+    {
+      "word": "This",
+      "start_ms": 23819,
+      "end_ms": 23979
+    },
+    {
+      "word": "power",
+      "start_ms": 24039,
+      "end_ms": 24579
+    },
+    {
+      "word": "is",
+      "start_ms": 24680,
+      "end_ms": 24879
+    },
+    {
+      "word": "forever",
+      "start_ms": 24959,
+      "end_ms": 25799
+    },
+    {
+      "word": "mine!",
+      "start_ms": 25979,
+      "end_ms": 27200
+    }
+  ]
+}

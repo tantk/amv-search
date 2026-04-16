@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Anime Music Video Generator</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400;500;600;700&f[]=satoshi@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+        /* === THEME === */
+        :root {
+            --bg-primary: #0a0c1a;
+            --bg-card: rgba(15, 20, 40, 0.85);
+            --text-primary: #e8eaf6;
+            --text-secondary: #7b8cde;
+            --accent-cyan: #00f0ff;
+            --accent-magenta: #ff00aa;
+            --accent-yellow: #ffe100;
+            --glow-cyan: rgba(0, 240, 255, 0.25);
+            --glow-magenta: rgba(255, 0, 170, 0.2);
+            --font-display: 'Clash Display', sans-serif;
+            --font-body: 'Satoshi', sans-serif;
+            --title-size: clamp(2.2rem, 6vw, 5.5rem);
+            --h2-size: clamp(1.4rem, 3.5vw, 2.8rem);
+            --h3-size: clamp(1rem, 2vw, 1.5rem);
+            --body-size: clamp(0.8rem, 1.4vw, 1.1rem);
+            --small-size: clamp(0.65rem, 1vw, 0.85rem);
+            --slide-padding: clamp(1.5rem, 5vw, 5rem);
+            --content-gap: clamp(0.8rem, 2vw, 2rem);
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* === RESET === */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* === VIEWPORT BASE (mandatory) === */
+        html, body { height: 100%; overflow-x: hidden; }
+        html { scroll-snap-type: y mandatory; scroll-behavior: smooth; }
+        .slide {
+            width: 100vw; height: 100vh; height: 100dvh;
+            overflow: hidden; scroll-snap-align: start;
+            display: flex; flex-direction: column; position: relative;
+        }
+        .slide-content {
+            flex: 1; display: flex; flex-direction: column; justify-content: center;
+            max-height: 100%; overflow: hidden; padding: var(--slide-padding);
+        }
+
+        /* === GLOBAL === */
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        /* === ANIMATED GRID BACKGROUND === */
+        .grid-bg {
+            position: absolute; inset: 0; z-index: 0;
+            background-image:
+                linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridDrift 20s linear infinite;
+        }
+        @keyframes gridDrift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        /* === GLOW ORBS === */
+        .orb {
+            position: absolute; border-radius: 50%; filter: blur(80px);
+            pointer-events: none; z-index: 0;
+        }
+        .orb-cyan { background: var(--glow-cyan); width: 400px; height: 400px; }
+        .orb-magenta { background: var(--glow-magenta); width: 350px; height: 350px; }
+
+        /* === ANIMATIONS === */
+        .reveal {
+            opacity: 0; transform: translateY(25px);
+            transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+        }
+        .reveal-scale {
+            opacity: 0; transform: scale(0.92);
+            transition: opacity 0.7s var(--ease-out-expo), transform 0.7s var(--ease-out-expo);
+        }
+        .slide.visible .reveal, .slide.visible .reveal-scale {
+            opacity: 1; transform: translateY(0) scale(1);
+        }
+        .reveal:nth-child(1) { transition-delay: 0.05s; }
+        .reveal:nth-child(2) { transition-delay: 0.15s; }
+        .reveal:nth-child(3) { transition-delay: 0.25s; }
+        .reveal:nth-child(4) { transition-delay: 0.35s; }
+        .reveal:nth-child(5) { transition-delay: 0.45s; }
+        .reveal:nth-child(6) { transition-delay: 0.55s; }
+
+        @keyframes glitchFlicker {
+            0%, 100% { opacity: 1; }
+            92% { opacity: 1; }
+            93% { opacity: 0.7; transform: translateX(-2px); }
+            94% { opacity: 1; transform: translateX(1px); }
+            95% { opacity: 0.8; }
+            96% { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { text-shadow: 0 0 20px var(--glow-cyan), 0 0 60px var(--glow-cyan); }
+            50% { text-shadow: 0 0 30px var(--accent-cyan), 0 0 80px var(--glow-cyan); }
+        }
+
+        @keyframes scanline {
+            0% { top: -10%; }
+            100% { top: 110%; }
+        }
+
+        /* === SLIDE 1: TITLE === */
+        .slide-title { background: var(--bg-primary); }
+        .slide-title .orb-cyan { top: -10%; right: -5%; }
+        .slide-title .orb-magenta { bottom: -15%; left: -5%; }
+
+        .title-main {
+            font-family: var(--font-display);
+            font-size: var(--title-size);
+            font-weight: 700;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            animation: glitchFlicker 4s infinite;
+        }
+        .title-main .accent-cyan { color: var(--accent-cyan); animation: pulseGlow 3s ease-in-out infinite; }
+        .title-main .accent-magenta { color: var(--accent-magenta); }
+
+        .title-sub {
+            font-family: var(--font-body);
+            font-size: var(--h3-size);
+            color: var(--text-secondary);
+            margin-top: var(--content-gap);
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .scanline {
+            position: absolute; left: 0; width: 100%; height: 2px; z-index: 1;
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+            opacity: 0.3; animation: scanline 6s linear infinite;
+        }
+
+        /* === SLIDE 2: PIPELINE === */
+        .slide-pipeline { background: var(--bg-primary); }
+        .slide-pipeline .orb-cyan { top: 50%; right: -10%; }
+        .slide-pipeline .orb-magenta { top: 10%; left: -8%; }
+
+        .pipeline-heading {
+            font-family: var(--font-display);
+            font-size: var(--h2-size);
+            font-weight: 600;
+            margin-bottom: clamp(1rem, 3vh, 2.5rem);
+        }
+
+        .pipeline-flow {
+            display: flex; align-items: center; justify-content: center;
+            gap: clamp(0.3rem, 1.5vw, 1rem);
+            flex-wrap: wrap;
+        }
+
+        .pipeline-step {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            border-radius: 12px;
+            padding: clamp(0.6rem, 1.5vw, 1.2rem) clamp(0.8rem, 2vw, 1.5rem);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: border-color 0.3s, box-shadow 0.3s;
+            min-width: clamp(80px, 12vw, 140px);
+        }
+        .pipeline-step:hover {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px var(--glow-cyan);
+        }
+        .pipeline-step .icon {
+            font-size: clamp(1.2rem, 2.5vw, 2rem);
+            display: block;
+            margin-bottom: clamp(0.2rem, 0.5vh, 0.5rem);
+        }
+        .pipeline-step .label {
+            font-family: var(--font-display);
+            font-size: var(--small-size);
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .pipeline-step .detail {
+            font-size: clamp(0.55rem, 0.8vw, 0.7rem);
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+        }
+
+        .arrow {
+            font-size: clamp(1rem, 2vw, 1.8rem);
+            color: var(--accent-cyan);
+            opacity: 0.6;
+        }
+
+        /* === SLIDE 3: TECH === */
+        .slide-tech { background: var(--bg-primary); }
+        .slide-tech .orb-cyan { bottom: -10%; left: 20%; }
+        .slide-tech .orb-magenta { top: -10%; right: 15%; }
+
+        .tech-heading {
+            font-family: var(--font-display);
+            font-size: var(--h2-size);
+            font-weight: 600;
+            margin-bottom: clamp(1rem, 3vh, 2.5rem);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: clamp(0.6rem, 1.5vw, 1.2rem);
+            max-width: min(90vw, 800px);
+            margin: 0 auto;
+        }
+
+        .tech-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: clamp(0.8rem, 2vw, 1.5rem);
+            backdrop-filter: blur(10px);
+            border-left: 3px solid var(--accent-cyan);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .tech-card:nth-child(2) { border-left-color: var(--accent-magenta); }
+        .tech-card:nth-child(3) { border-left-color: var(--accent-yellow); }
+        .tech-card:nth-child(4) { border-left-color: #7c4dff; }
+
+        .tech-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .tech-card .name {
+            font-family: var(--font-display);
+            font-size: var(--h3-size);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        .tech-card .desc {
+            font-size: var(--small-size);
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* === SLIDE 4: CTA === */
+        .slide-cta { background: var(--bg-primary); }
+        .slide-cta .orb-cyan { top: 30%; left: 30%; width: 500px; height: 500px; }
+        .slide-cta .orb-magenta { top: 20%; right: 20%; width: 400px; height: 400px; }
+
+        .cta-text {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 5vw, 4rem);
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.15;
+        }
+        .cta-text .line2 {
+            color: var(--accent-cyan);
+            animation: pulseGlow 2.5s ease-in-out infinite;
+        }
+
+        .cta-stats {
+            display: flex; justify-content: center; gap: clamp(1.5rem, 4vw, 4rem);
+            margin-top: clamp(1.5rem, 3vh, 3rem);
+        }
+        .stat { text-align: center; }
+        .stat .num {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3.5vw, 3rem);
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+        .stat .lbl {
+            font-size: var(--small-size);
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* === NAV DOTS === */
+        .nav-dots {
+            position: fixed; right: clamp(0.8rem, 2vw, 1.5rem);
+            top: 50%; transform: translateY(-50%);
+            display: flex; flex-direction: column; gap: 10px; z-index: 100;
+        }
+        .nav-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: none; cursor: pointer; transition: all 0.3s;
+            padding: 0;
+        }
+        .nav-dot.active {
+            background: var(--accent-cyan);
+            box-shadow: 0 0 10px var(--glow-cyan);
+            transform: scale(1.3);
+        }
+
+        /* === AUTOPLAY PROMPT === */
+        .autoplay-prompt {
+            position: fixed; inset: 0;
+            background: rgba(10, 12, 26, 0.94);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            z-index: 20000; gap: clamp(0.8rem, 1.5vw, 1.5rem);
+            opacity: 1; transition: opacity 0.5s ease;
+        }
+        .autoplay-prompt.hidden { opacity: 0; pointer-events: none; }
+
+        .autoplay-prompt .play-btn {
+            width: clamp(70px, 12vw, 100px); height: clamp(70px, 12vw, 100px);
+            border-radius: 50%;
+            background: rgba(0, 240, 255, 0.1);
+            border: 2px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            font-size: clamp(1.8rem, 3.5vw, 3rem);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 25px var(--glow-cyan);
+            animation: pulse-play 2s infinite ease-in-out;
+        }
+        .autoplay-prompt .play-btn:hover {
+            background: var(--accent-cyan); color: var(--bg-primary);
+            box-shadow: 0 0 50px var(--glow-cyan);
+        }
+        @keyframes pulse-play {
+            0%, 100% { box-shadow: 0 0 25px var(--glow-cyan); }
+            50% { box-shadow: 0 0 40px var(--glow-cyan), 0 0 70px rgba(0, 240, 255, 0.15); }
+        }
+        .autoplay-prompt .play-label {
+            font-family: var(--font-body); font-size: var(--body-size);
+            color: var(--text-secondary);
+        }
+        .autoplay-prompt .play-sublabel {
+            font-family: var(--font-body); font-size: var(--small-size);
+            color: rgba(123, 140, 222, 0.5);
+        }
+
+        /* === AUDIO TOGGLE === */
+        .audio-toggle {
+            position: fixed; bottom: clamp(1.5rem, 3vh, 2.5rem);
+            left: clamp(1rem, 2vw, 2rem);
+            background: var(--bg-card); border: 1px solid rgba(0, 240, 255, 0.15);
+            color: var(--accent-cyan); font-family: var(--font-body);
+            font-size: var(--small-size); padding: 6px 14px; border-radius: 8px;
+            cursor: pointer; z-index: 1000; transition: all 0.3s;
+            display: flex; align-items: center; gap: 6px;
+            backdrop-filter: blur(10px);
+        }
+        .audio-toggle:hover { border-color: var(--accent-cyan); box-shadow: 0 0 15px var(--glow-cyan); }
+        .audio-toggle.muted { color: var(--text-secondary); border-color: rgba(255,255,255,0.06); }
+
+        .audio-indicator {
+            display: inline-flex; align-items: flex-end; gap: 2px; height: 12px;
+        }
+        .audio-indicator .bar {
+            width: 2px; background: var(--accent-cyan); border-radius: 1px;
+            animation: wave 0.8s ease-in-out infinite;
+        }
+        .audio-indicator .bar:nth-child(1) { height: 4px; animation-delay: 0s; }
+        .audio-indicator .bar:nth-child(2) { height: 8px; animation-delay: 0.1s; }
+        .audio-indicator .bar:nth-child(3) { height: 12px; animation-delay: 0.2s; }
+        .audio-indicator .bar:nth-child(4) { height: 6px; animation-delay: 0.3s; }
+        @keyframes wave {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.4); }
+        }
+        .audio-toggle.muted .audio-indicator .bar {
+            animation: none; height: 3px; background: var(--text-secondary);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-height: 700px) {
+            :root {
+                --slide-padding: clamp(0.75rem, 3vw, 2rem);
+                --title-size: clamp(1.5rem, 5vw, 3rem);
+            }
+        }
+        @media (max-height: 500px) {
+            .nav-dots { display: none; }
+        }
+        @media (max-width: 600px) {
+            .tech-grid { grid-template-columns: 1fr; }
+            .pipeline-flow { flex-direction: column; }
+            .arrow { transform: rotate(90deg); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.2s !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- === AUTOPLAY PROMPT === -->
+<div class="autoplay-prompt" id="autoplayPrompt">
+    <button class="play-btn" id="playBtn" aria-label="Start presentation with voiceover">&#x25B6;</button>
+    <div class="play-label">Click to start with voiceover</div>
+    <div class="play-sublabel">20s &bull; 4 slides &bull; auto-advance</div>
+</div>
+
+<!-- === AUDIO TOGGLE === -->
+<button class="audio-toggle" id="audioToggle" aria-label="Toggle voiceover">
+    <span class="audio-indicator">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </span>
+    <span id="audioLabel">voice on</span>
+</button>
+
+<!-- === NAV DOTS === -->
+<nav class="nav-dots" aria-label="Slide navigation">
+    <button class="nav-dot active" data-slide="0"></button>
+    <button class="nav-dot" data-slide="1"></button>
+    <button class="nav-dot" data-slide="2"></button>
+    <button class="nav-dot" data-slide="3"></button>
+</nav>
+
+<!-- === SLIDE 1: TITLE === -->
+<section class="slide slide-title" id="slide-0">
+    <div class="grid-bg"></div>
+    <div class="scanline"></div>
+    <div class="orb orb-cyan"></div>
+    <div class="orb orb-magenta"></div>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <h1 class="title-main reveal">
+            <span class="accent-cyan">AI</span> Anime<br>
+            Music Video <span class="accent-magenta">Generator</span>
+        </h1>
+        <p class="title-sub reveal">Lyrics to visuals in seconds</p>
+    </div>
+</section>
+
+<!-- === SLIDE 2: PIPELINE === -->
+<section class="slide slide-pipeline" id="slide-1">
+    <div class="grid-bg"></div>
+    <div class="orb orb-cyan"></div>
+    <div class="orb orb-magenta"></div>
+    <div class="slide-content" style="align-items: center;">
+        <h2 class="pipeline-heading reveal" style="text-align:center;">How It Works</h2>
+        <div class="pipeline-flow">
+            <div class="pipeline-step reveal">
+                <span class="icon">🎵</span>
+                <span class="label">AI Song</span>
+                <span class="detail">ElevenLabs</span>
+            </div>
+            <span class="arrow reveal">→</span>
+            <div class="pipeline-step reveal">
+                <span class="icon">🔍</span>
+                <span class="label">Embed</span>
+                <span class="detail">Qwen3-VL</span>
+            </div>
+            <span class="arrow reveal">→</span>
+            <div class="pipeline-step reveal">
+                <span class="icon">🎯</span>
+                <span class="label">Search</span>
+                <span class="detail">turbopuffer</span>
+            </div>
+            <span class="arrow reveal">→</span>
+            <div class="pipeline-step reveal">
+                <span class="icon">🥁</span>
+                <span class="label">Beat Sync</span>
+                <span class="detail">librosa</span>
+            </div>
+            <span class="arrow reveal">→</span>
+            <div class="pipeline-step reveal">
+                <span class="icon">🎬</span>
+                <span class="label">Render</span>
+                <span class="detail">ffmpeg</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- === SLIDE 3: TECH === -->
+<section class="slide slide-tech" id="slide-2">
+    <div class="grid-bg"></div>
+    <div class="orb orb-cyan"></div>
+    <div class="orb orb-magenta"></div>
+    <div class="slide-content" style="align-items: center;">
+        <h2 class="tech-heading reveal" style="text-align:center;">Under the Hood</h2>
+        <div class="tech-grid">
+            <div class="tech-card reveal">
+                <div class="name">Qwen3-VL</div>
+                <div class="desc">Visual embedding — frames become searchable vectors</div>
+            </div>
+            <div class="tech-card reveal">
+                <div class="name">turbopuffer</div>
+                <div class="desc">Hybrid search — vector ANN + BM25 keyword matching</div>
+            </div>
+            <div class="tech-card reveal">
+                <div class="name">librosa</div>
+                <div class="desc">Beat detection — cuts land on every rhythmic hit</div>
+            </div>
+            <div class="tech-card reveal">
+                <div class="name">ElevenLabs</div>
+                <div class="desc">AI music generation with word-level timestamps</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- === SLIDE 4: CTA === -->
+<section class="slide slide-cta" id="slide-3">
+    <div class="grid-bg"></div>
+    <div class="orb orb-cyan"></div>
+    <div class="orb orb-magenta"></div>
+    <div class="slide-content" style="align-items: center; text-align: center;">
+        <div class="cta-text reveal-scale">
+            Let's watch it<br>
+            <span class="line2">in action</span>
+        </div>
+        <div class="cta-stats reveal">
+            <div class="stat">
+                <div class="num">1,800+</div>
+                <div class="lbl">Anime clips</div>
+            </div>
+            <div class="stat">
+                <div class="num">7</div>
+                <div class="lbl">Anime series</div>
+            </div>
+            <div class="stat">
+                <div class="num">~170</div>
+                <div class="lbl">BPM sync</div>
+            </div>
+        </div>
+        <div class="reveal" style="margin-top: 32px; width: 100%; max-width: 560px;">
+            <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:8px; border:1px solid rgba(255,255,255,0.1);">
+                <iframe src="https://www.youtube.com/embed/k597okobXsc?start=18" style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <a href="https://www.youtube.com/watch?v=k597okobXsc&t=18s" target="_blank" style="display:inline-block; margin-top:12px; font-family:monospace; font-size:0.75rem; color:rgba(255,255,255,0.4); text-decoration:none; letter-spacing:0.05em;">Watch demo on YouTube &rarr;</a>
+        </div>
+    </div>
+</section>
+
+<!-- === JAVASCRIPT === -->
+<script>
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.nav-dot');
+    let current = 0;
+
+    /* Slide timings (seconds into voiceover when each slide should appear) */
+    const slideTimes = [0, 5, 11, 16];
+
+    /* Intersection Observer */
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                const idx = [...slides].indexOf(entry.target);
+                current = idx;
+                dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+            }
+        });
+    }, { threshold: 0.5 });
+    slides.forEach(s => observer.observe(s));
+
+    /* Nav dot clicks */
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const idx = parseInt(dot.dataset.slide);
+            current = idx;
+            slides[idx].scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    /* Keyboard navigation */
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+            e.preventDefault();
+            current = Math.min(current + 1, slides.length - 1);
+            slides[current].scrollIntoView({ behavior: 'smooth' });
+        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+            e.preventDefault();
+            current = Math.max(current - 1, 0);
+            slides[current].scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+
+    /* === VOICEOVER CONTROLLER === */
+    const voiceover = new Audio('intro_voiceover.mp3');
+    voiceover.preload = 'auto';
+    let isMuted = false;
+    let autoAdvanceTimer = null;
+
+    function goToSlide(idx) {
+        if (idx < 0 || idx >= slides.length) return;
+        current = idx;
+        slides[idx].scrollIntoView({ behavior: 'smooth' });
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    function startAutoAdvance() {
+        /* Advance slides based on voiceover timing */
+        slideTimes.forEach((time, idx) => {
+            if (idx === 0) return; /* first slide is already showing */
+            setTimeout(() => goToSlide(idx), time * 1000);
+        });
+    }
+
+    /* Play button */
+    const prompt = document.getElementById('autoplayPrompt');
+    const playBtn = document.getElementById('playBtn');
+
+    playBtn.addEventListener('click', () => {
+        prompt.classList.add('hidden');
+        voiceover.play().catch(() => {});
+        startAutoAdvance();
+    });
+
+    /* Also start on any key */
+    document.addEventListener('keydown', (e) => {
+        if (!prompt.classList.contains('hidden')) {
+            e.preventDefault();
+            prompt.classList.add('hidden');
+            voiceover.play().catch(() => {});
+            startAutoAdvance();
+        }
+    }, { once: true });
+
+    /* Audio toggle */
+    const audioToggle = document.getElementById('audioToggle');
+    const audioLabel = document.getElementById('audioLabel');
+
+    audioToggle.addEventListener('click', () => {
+        isMuted = !isMuted;
+        voiceover.muted = isMuted;
+        audioToggle.classList.toggle('muted', isMuted);
+        audioLabel.textContent = isMuted ? 'voice off' : 'voice on';
+    });
+</script>
+</body>
+</html>

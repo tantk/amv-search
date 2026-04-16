@@ -1,0 +1,65 @@
+[
+  {
+    "start_ms": 0,
+    "end_ms": 3000,
+    "lyric": "[Intro]",
+    "section": "Intro",
+    "search_query": "fast electric guitar riff rapid drum fill explosive start An epic rock anime opening theme in English. It fe",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s3e14\\clip_0172.mp4",
+    "clip_id": "aot_s3e14_clip_0172"
+  },
+  {
+    "start_ms": 3000,
+    "end_ms": 7500,
+    "lyric": "Tangled in these silver chains, a prisoner to the night,",
+    "section": "Verse",
+    "search_query": "Tangled in these silver chains, a prisoner to the night, powerful female lead vocal driving bassline",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s1e01\\clip_0026.mp4",
+    "clip_id": "aot_s1e01_clip_0026"
+  },
+  {
+    "start_ms": 7500,
+    "end_ms": 12000,
+    "lyric": "But a fire in my heart ignites, a burning, guiding light!",
+    "section": "Verse",
+    "search_query": "But a fire in my heart ignites, a burning, guiding light! powerful female lead vocal driving bassline",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s3e17\\clip_0192.mp4",
+    "clip_id": "aot_s3e17_clip_0192"
+  },
+  {
+    "start_ms": 12000,
+    "end_ms": 18000,
+    "lyric": "For you I'll face the endless dark, and tear the shadows down!",
+    "section": "Pre-Chorus",
+    "search_query": "For you I'll face the endless dark, and tear the shadows down! building tension rising vocal melody",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s2e06\\clip_0156.mp4",
+    "clip_id": "aot_s2e06_clip_0156"
+  },
+  {
+    "start_ms": 18000,
+    "end_ms": 22000,
+    "lyric": "Breaking free, our fates entwined!",
+    "section": "Chorus",
+    "search_query": "Breaking free, our fates entwined! soaring female vocals epic and emotional chorus",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s3e14\\clip_0262.mp4",
+    "clip_id": "aot_s3e14_clip_0262"
+  },
+  {
+    "start_ms": 22000,
+    "end_ms": 26000,
+    "lyric": "My soul will rise, a brand new star,",
+    "section": "Chorus",
+    "search_query": "My soul will rise, a brand new star, soaring female vocals epic and emotional chorus",
+    "clip_path": "C:\\dev\\embeddings\\clips\\aot_s3e17\\clip_0207.mp4",
+    "clip_id": "aot_s3e17_clip_0207"
+  },
+  {
+    "start_ms": 26000,
+    "end_ms": 30000,
+    "lyric": "This power is forever mine!",
+    "section": "Chorus",
+    "search_query": "This power is forever mine! soaring female vocals epic and emotional chorus",
+    "clip_path": "C:\\dev\\embeddings\\clips\\slime_ep09\\clip_0196.mp4",
+    "clip_id": "slime_ep09_clip_0196"
+  }
+]

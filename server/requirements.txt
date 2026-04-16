@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+httpx
+python-dotenv
+turbopuffer
+elevenlabs
+librosa
+numpy
+scipy
+huggingface-hub
