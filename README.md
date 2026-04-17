@@ -27,7 +27,7 @@ Two modes share the same pipeline:
 | History storage | HF Datasets (`tantk/amv-history`) |
 | Stock clip APIs | Pixabay + Pexels |
 
-**Total infrastructure cost: $0** — every service runs on a free tier.
+**Total infrastructure cost: minimal** — ElevenLabs (song generation) and turbopuffer (vector search) are paid services, but both sponsors provided hackathon credits. Every other service runs on a free tier.
 
 ## Pipeline at a Glance
 
@@ -208,21 +208,21 @@ After this, upload the clips to a Hugging Face Space's `static/anime_clips/` via
 
 ## Cost Breakdown
 
-Every external service sits on a free or generous-limit tier:
+Most of the stack runs free; the two paid services covered their hackathon cost with sponsor credits:
 
 | Component | Provider | Tier |
 |---|---|---|
-| Music generation | ElevenLabs API | Pay-per-use |
+| Music generation | ElevenLabs API | Paid — covered by ElevenHacks sponsor credits |
+| Vector search + BM25 | turbopuffer | Paid — covered by ElevenHacks sponsor credits |
 | Text embedding (anime) | DashScope text-embedding-v4 | 1M free tokens / 90 days |
 | Text embedding (stock) | SiliconFlow Qwen3-Embedding-0.6B | Free |
-| Vector search + BM25 | turbopuffer | Free tier |
 | Video rendering | Rendi | 50GB/month free |
 | Backend hosting | HF Spaces (cpu-basic) | Free |
 | Frontend hosting | Vercel | Free |
 | History storage | HF Datasets | Free |
 | Clip storage | HF Spaces git LFS | Free |
 
-**Total infrastructure cost: $0** for demo volumes.
+**Total infrastructure cost: minimal** for demo volumes — paid services were sponsor-comped, everything else is free-tier.
 
 ## Performance
 
