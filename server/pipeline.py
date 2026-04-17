@@ -271,6 +271,10 @@ def _bpm_from_metadata(metadata: dict) -> float | None:
     `composition_plan.positive_global_styles` and `song_metadata.description`.
     This is authoritative (the model tells us what it generated) and
     sidesteps librosa's well-known octave error on sparse/harmonic music.
+
+    When no numeric BPM is present, falls back to qualitative tempo words
+    (e.g. "slow tempo", "ballad", "uptempo") — ElevenLabs sometimes labels
+    tempo only qualitatively.
     """
     import re
     plan = metadata.get("composition_plan") or {}
@@ -290,6 +294,18 @@ def _bpm_from_metadata(metadata: dict) -> float | None:
             bpm = int(m.group(1))
             if 40 <= bpm <= 240:
                 return float(bpm)
+
+    # Fallback: qualitative tempo terms when no number is present
+    TEMPO_WORDS = {
+        "very slow": 60, "slow tempo": 70, "ballad": 75,
+        "moderate tempo": 110,
+        "uptempo": 145, "fast tempo": 160, "very fast": 180,
+    }
+    blob = " ".join(s.lower() for s in haystacks if isinstance(s, str))
+    # Check longer phrases first so "very slow" beats "slow"
+    for term, bpm in sorted(TEMPO_WORDS.items(), key=lambda kv: -len(kv[0])):
+        if term in blob:
+            return float(bpm)
     return None
 
 
